@@ -1,0 +1,35 @@
+#hamberger-icon {
+  display: none;
+  flex-direction: column;
+  width: 3rem;
+}
+#hamberger-icon > div {
+  height: 3px;
+  margin: 3px 0;
+  background-color: white;
+  transition: 0.3s;
+}
+#hamberger-icon > div:nth-of-type(1) {
+  width: 50%;
+}
+#hamberger-icon > div:nth-of-type(3) {
+  width: 75%;
+}
+#hamberger-icon > input:checked ~ div:nth-of-type(1) {
+  transform: rotate(45deg) translate(4px, 0);
+  transform-origin: bottom;
+}
+#hamberger-icon > input:checked ~ div:nth-of-type(2) {
+  transform: rotate(-45deg);
+  transform-origin: top;
+}
+#hamberger-icon > input:checked ~ div:nth-of-type(3) {
+  transform: rotate(45deg) translate(1px, -10px);
+  transform-origin: bottom;
+}
+
+@media screen and (max-width: 700px) {
+  #hamberger-icon {
+    display: flex;
+  }
+}
