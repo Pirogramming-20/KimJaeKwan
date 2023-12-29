@@ -1,0 +1,67 @@
+.main-portfolio {
+  display: flex;
+  margin: 2rem var(--offset);
+  background-color: #333333;
+  height: 16rem;
+  border-radius: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+@media screen and (max-width: 650px) {
+  .main-portfolio {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem var(--gutter);
+    background-color: #333333;
+    height: 32rem;
+    border-radius: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .main-portfolio-image {
+    margin: var(--offset) 0;
+    width: 20rem;
+    height: 15rem;
+  }
+  .main-portfolio-title {
+    text-align: center;
+  }
+  .main-portfolio-explain {
+    text-align: center;
+  }
+}
+.main-portfolio-image {
+  margin-left: var(--gutter);
+  width: 15rem;
+  height: 13rem;
+  background-color: white;
+  border-radius: 5px;
+}
+.main-portfolio-main {
+  display: flex;
+  flex-direction: column;
+}
+.main-portfolio-title {
+  margin-left: var(--gutter);
+  font-size: 2.5rem;
+}
+.main-portfolio-explain {
+  margin: var(--gutter);
+  color: #c6c6c6;
+}
+.main-portfolio-team {
+  display: flex;
+  margin-left: var(--gutter);
+}
+.main-portfolio-team > div {
+  margin: 10px 5px;
+  padding: 8px;
+  background-color: rgba(236, 236, 236, 0.466);
+  border-radius: 0.7rem;
+  color: black;
+  font-weight: bold;
+}
+.main-portfolio-team > div:first-of-type {
+  color: white;
+  background-color: #2188b6;
+}

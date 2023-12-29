@@ -5,6 +5,9 @@
   padding: 0 var(--offset);
   font-weight: bold;
 }
+#interview-contents div:last-of-type {
+  margin-bottom: 2rem;
+}
 @media screen and (min-width: 401px) {
   #interview-contents {
     grid-template-columns: repeat(2, 1fr);
@@ -24,6 +27,7 @@
 }
 .interview-content-head {
   display: flex;
+  height: 80%;
 }
 .circle {
   margin: 0 1rem 0 2rem;
