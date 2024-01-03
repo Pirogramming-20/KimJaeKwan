@@ -6,8 +6,33 @@ const input1 = document.getElementById("number1");
 const input2 = document.getElementById("number2");
 const input3 = document.getElementById("number3");
 
+const submitBtn = document.querySelector(".submit-button");
+
+//input에서 enter키 누르면 확인하기 버튼을 클릭한 것과 같은 효과
+input1.addEventListener("keypress", (event) => {
+  if (event.code === "Enter") {
+    submitBtn.click();
+  }
+});
+input2.addEventListener("keypress", (event) => {
+  if (event.code === "Enter") {
+    submitBtn.click();
+  }
+});
+input3.addEventListener("keypress", (event) => {
+  if (event.code === "Enter") {
+    submitBtn.click();
+  }
+});
 //첫번째 input에 자동으로 focus
 input1.focus();
+
+input1.addEventListener("input", () => {
+  if (input1.value !== "") input2.focus();
+});
+input2.addEventListener("input", () => {
+  if (input2.value !== "") input3.focus();
+});
 function resetInput() {
   input1.value = "";
   input2.value = "";
@@ -44,7 +69,6 @@ function check_numbers() {
   showResult();
 
   const gameResultImg = document.getElementById("game-result-img");
-  const submitBtn = document.querySelector(".submit-button");
   //3S면 성공이미지 출력
   if (result.strike === 3) {
     gameResultImg.src = "./success.png";
@@ -61,6 +85,7 @@ function check_numbers() {
   resetInput();
 }
 
+//random 숫자를 중복없이 3개 만드는 함수
 function createRandomNum() {
   let randomIndexArray = [];
   for (let i = 0; i < 3; i++) {
@@ -74,6 +99,7 @@ function createRandomNum() {
   return randomIndexArray;
 }
 
+//숫자를 비교하는 함수(list)
 function CompareNum(selectIndex, answerIndex) {
   let strike = 0;
   let ball = 0;
@@ -128,9 +154,11 @@ function showResult() {
       ballNumResult.className = "ball num-result";
       ballNumResult.innerText = "B";
 
-      right.textContent = resultG.result.strike;
+      right.appendChild(document.createTextNode(resultG.result.strike));
+      //strikeNumResult가 text가 되지 않게 하기 위한 코드ㅂ
+      right.appendChild(document.createTextNode(" "));
       right.appendChild(strikeNumResult);
-      right.textContent += resultG.result.ball;
+      right.appendChild(document.createTextNode(resultG.result.ball));
       right.appendChild(ballNumResult);
     }
     checkResult.appendChild(left);
