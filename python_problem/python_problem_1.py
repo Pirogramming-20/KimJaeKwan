@@ -15,3 +15,7 @@ while True:
             print("1,2,3 중 하나를 입력하세요")
     else:
         print("정수를 입력하세요")
+
+#4단계
+for i in range(1, input_num + 1):
+    print(f"playerA : {i}")
