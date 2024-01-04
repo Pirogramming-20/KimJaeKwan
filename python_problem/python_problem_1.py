@@ -1,3 +1,5 @@
+import random
+
 num = 0
 
 def brGame():
@@ -21,6 +23,14 @@ def brGame():
 
 while num < 31:
     brGame()
+    if num >= 31:
+        print("computer win!")
+        break
+    
+    computerInput = random.randint(1,3)
+    for i in range(1, computerInput + 1):
+        num += 1
+        print(f"computer : {num}")
     
     if num >= 31:
         print("player win!")
