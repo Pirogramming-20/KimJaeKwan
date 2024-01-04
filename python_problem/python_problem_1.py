@@ -23,6 +23,7 @@ while num < 31:
         print(f"playerA : {num}")
         
     if num >= 31:
+        print("playerB win!")
         break
 
     #b에 대한 입력
@@ -43,4 +44,5 @@ while num < 31:
         print(f"playerB : {num}")
     
     if num >= 31:
+        print("playerA win!")
         break
