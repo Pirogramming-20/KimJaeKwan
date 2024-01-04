@@ -1,3 +1,7 @@
+#main {
+  width: min(1200px, 100%);
+  margin: auto;
+}
 .main-portfolio {
   display: flex;
   margin: 2rem var(--offset);
