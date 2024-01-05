@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHubPage</title>
+    <style>
+      html,
+      body {
+        height: 1100px;
+        margin: 0;
+        padding: 0;
+        background-image: url(./github.jpg);
+        background-repeat: no-repeat;
+        background-position: right bottom;
+        background-color: white;
+        background-blend-mode: multiply;
+      }
+      #wrap {
+        width: 100%;
+        height: 900px;
+        background-color: rgba(0, 0, 0, 0.816);
+      }
+      #menu {
+        display: flex;
+        justify-content: space-between;
+      }
+      #menu-left {
+        display: flex;
+        height: 100px;
+      }
+      #menu-left a {
+        font-size: 2rem;
+        margin: 30px 0 0 50px;
+        color: white;
+      }
+      #menu-right {
+        float: right;
+        margin-top: 30px;
+        margin-right: 50px;
+      }
+      #menu-right > button,
+      input {
+        height: 40px;
+        margin-left: 50px;
+        color: white;
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+      #menu-right input {
+        border-radius: 4px;
+        background-color: gray;
+      }
+      #menu-right input::placeholder {
+        color: white;
+      }
+      #menu-right button {
+        background-color: transparent;
+      }
+      #menu-right button:first-of-type {
+        border: none;
+      }
+      #menu-right button:last-of-type {
+        border-color: white;
+        border-radius: 4px;
+      }
+      #main {
+        height: 800px;
+        margin: 50 auto;
+        color: white;
+        display: flex;
+      }
+      #main-left {
+        margin: 130px 100px 0 500px;
+        width: 500px;
+      }
+      #main-left-top {
+        font-size: 5rem;
+      }
+      #main-left-bottom {
+        width: 600px;
+        font-size: 1.5rem;
+        color: gray;
+      }
+      #main-right {
+        width: 600px;
+        height: 700px;
+        border-radius: 10px;
+        background-color: white;
+        margin-left: 150px;
+        color: black;
+      }
+      #main-right-top > div {
+        margin: 40px 0 0 40px;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      #main-right-top > input {
+        height: 50px;
+        width: 500px;
+        margin: 5px 40px;
+        border-radius: 5px;
+      }
+      #main-right-bottom > div {
+        text-align: left;
+        margin: 15px 35px;
+      }
+      #main-right-bottom > button {
+        margin: 15px 50px;
+        width: 500px;
+        height: 100px;
+        background-color: #03c75a;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 1.5rem;
+      }
+      #main-right-bottom > button:hover {
+        background-color: green;
+      }
+      .white {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="menu">
+        <div id="menu-left">
+          <a href="">
+            <div></div>
+            <span>Why GitHub?</span>
+          </a>
+          <a href="">
+            <div></div>
+            <span>Team</span>
+          </a>
+          <a href="">
+            <div></div>
+            <span>Enterprise</span>
+          </a>
+          <a href="">
+            <div></div>
+            <span>Explore</span>
+          </a>
+          <a href="">
+            <div></div>
+            <span>Marketplace</span>
+          </a>
+          <a href="">
+            <div></div>
+            <span>Pricing</span>
+          </a>
+        </div>
+        <div id="menu-right">
+          <input type="text" placeholder="Search GitHub" />
+          <button>Sign in</button>
+          <button>Sign up</button>
+        </div>
+      </div>
+      <div id="main">
+        <div id="main-left">
+          <div id="main-left-top">Built for developers</div>
+          <div id="main-left-bottom">
+            GitHub is a development platform inspired by the way you work. From
+            <span class="white">open source</span> to
+            <span class="white">business</span>. you can host and review code,
+            manage project, and build software alongside 50 million deverlopers
+          </div>
+        </div>
+        <div id="main-right">
+          <div id="main-right-top">
+            <div>Username</div>
+            <input type="text" />
+            <div>Email</div>
+            <input type="text" />
+            <div>Password</div>
+            <input type="text" />
+          </div>
+          <div id="main-right-bottom">
+            <div>
+              Make sure it's at leate 15 characters OR at least 8 characters
+              including a number and a lowercase letter.Learn more
+            </div>
+            <button>Sign up for GibHub</button>
+            <div>
+              By clicking "sign up for GitHub", you agree to our Terms of
+              Service and Privacy Statement. we'll occasionally send you account
+              related emails.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </body>
+</html>
