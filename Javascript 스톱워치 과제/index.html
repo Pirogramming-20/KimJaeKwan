@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript 스톱워치 과제</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script
+      src="https://kit.fontawesome.com/880ce38071.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header><i class="fa-solid fa-stopwatch"></i>피로그래밍 스톱워치</header>
+    <div id="stopWatch">
+      <div id="time">00:00</div>
+      <div id="btns">
+        <button class="btn" onclick="start()">start</button>
+        <button class="btn" onclick="stop()">stop</button>
+        <button class="btn" onclick="reset()">reset</button>
+      </div>
+    </div>
+    <div id="records">
+      <div id="records-header">
+        <i class="fa-regular fa-circle"></i>구간 기록<i
+          class="fa-solid fa-trash"
+        ></i>
+      </div>
+      <div class="record">
+        <i class="fa-regular fa-circle"></i>
+        <p>01:74</p>
+        <i></i>
+      </div>
+    </div>
+    <script src="./scrict.js"></script>
+  </body>
+</html>
