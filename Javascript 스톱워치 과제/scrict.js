@@ -2,6 +2,13 @@ let time = document.getElementById("time");
 let currentTime = 0;
 let second, millisecond;
 const recordUl = document.querySelector(".record-ul");
+const records = document.getElementById("records");
+
+records.addEventListener("click", (e) => {
+  if (e.target.tagName == "I") {
+    e.target.classList.toggle("checked");
+  }
+});
 
 function printTime() {
   currentTime++;
@@ -23,7 +30,9 @@ function stop() {
 function reset() {
   currentTime = 0;
   time.innerText = "00:00";
-  stop();
+  if (timer != null) {
+    clearTimeout(timer);
+  }
 }
 
 function transformationTime() {
@@ -43,7 +52,7 @@ function addRecord() {
   // </li>
   const li = document.createElement("li");
   const icon = document.createElement("i");
-  icon.className = "fa-regular fa-circle";
+  icon.classList = "fa-regular fa-circle circleI";
   const pauseTime = document.createElement("p");
   pauseTime.innerText = transformationTime();
   const empty = document.createElement("i");
@@ -53,3 +62,27 @@ function addRecord() {
   li.appendChild(empty);
   recordUl.appendChild(li);
 }
+
+// const circleIcon = document.querySelector(".fa-regular.fa-circle.circle");
+
+// circleIcon.addEventListener("click", (e) => {
+//   e.target.classList.toggle("checked");
+// });
+const trashIcon = document.querySelector(".fa-solid.fa-trash");
+
+trashIcon.addEventListener("click", () => {
+  const checkedElements = document.querySelectorAll(
+    ".fa-regular.fa-circle.checked"
+  );
+
+  if (checkedElements.length === 0) {
+    recordUl.innerHTML = "";
+  } else {
+    checkedElements.forEach((checkedElement) => {
+      const liParent = checkedElement.closest("li");
+      if (liParent) {
+        liParent.remove();
+      }
+    });
+  }
+});
