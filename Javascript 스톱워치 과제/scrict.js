@@ -1,6 +1,7 @@
 let time = document.getElementById("time");
 let currentTime = 0;
 let second, millisecond;
+const recordUl = document.querySelector(".record-ul");
 
 function printTime() {
   currentTime++;
@@ -35,5 +36,20 @@ function transformationTime() {
 }
 
 function addRecord() {
-    
+  // <li>
+  //   <i class="fa-regular fa-circle"></i>
+  //   <p>01:74</p>
+  //   <i></i>
+  // </li>
+  const li = document.createElement("li");
+  const icon = document.createElement("i");
+  icon.className = "fa-regular fa-circle";
+  const pauseTime = document.createElement("p");
+  pauseTime.innerText = transformationTime();
+  const empty = document.createElement("i");
+
+  li.appendChild(icon);
+  li.appendChild(pauseTime);
+  li.appendChild(empty);
+  recordUl.appendChild(li);
 }
