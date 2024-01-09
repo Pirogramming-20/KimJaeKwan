@@ -1,4 +1,4 @@
-#print('Hello, Django girls!')
+# print('Hello, Django girls!')
 
 # if 3 > 2:
 #     print('It works!')
@@ -50,10 +50,12 @@
 
 # hi("Sonja")
 
-def hi(name):
-    print('Hi ' + name + '!')
 
-girls = ['Rachel', 'Monica', 'Phoebe', 'Ola', 'You']
+def hi(name):
+    print("Hi " + name + "!")
+
+
+girls = ["Rachel", "Monica", "Phoebe", "Ola", "You"]
 for name in girls:
     hi(name)
-    print('Next girl')
+    print("Next girl")
