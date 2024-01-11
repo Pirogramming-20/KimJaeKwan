@@ -1,0 +1,12 @@
+<h3>my Movie reviews</h3>
+
+<a href="/reviews/create"> 리뷰 작성하러 가기</a>
+
+{% for review in reviews %}
+<div>
+  <p><a href="/reviews/{{review.id}}">{{review.title}}</a></p>
+  <p>{{review.genre}}</p>
+  <p>{{review.horoscope}}</p>
+  <br />
+</div>
+{% endfor %}
