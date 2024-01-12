@@ -1,22 +1,30 @@
-<a href="/reviews"> my Movie reviews</a>
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/reviews.css' %}" />
+  </head>
+  <body>
+    <a href="/reviews"> my Movie reviews</a>
 
-<h1>{{ review.title }}</h1>
-<small>감독: {{ review.director }}</small>
-<br />
-<p>주연: {{ review.mainActor }}</p>
-<br />
-<p>장르: {{ review.genre }}</p>
-<br />
-<p>별점: {{ review.horoscope }}</p>
-<br />
-<p>러닝타임: {{ review.runningTime }}</p>
-<br />
-<p>리뷰 내용: {{ review.reviewContent }}</p>
-<br />
+    <h1>{{ review.title }}</h1>
+    <small>감독: {{ review.director }}</small>
+    <br />
+    <p>주연: {{ review.mainActor }}</p>
+    <br />
+    <p>장르: {{ review.genre }}</p>
+    <br />
+    <p>별점: {{ review.horoscope }}</p>
+    <br />
+    <p>러닝타임: {{ review.runningTime }}</p>
+    <br />
+    <p>리뷰 내용: {{ review.reviewContent }}</p>
+    <br />
 
-<a href="/reviews/{{review.id}}/update"> 수정하기 </a>
+    <a href="/reviews/{{review.id}}/update"> 수정하기 </a>
 
-<form action="/reviews/{{review.id}}/delete" method="post">
-  {% csrf_token %}
-  <input type="submit" value="삭제하기" />
-</form>
+    <form action="/reviews/{{review.id}}/delete" method="post">
+      {% csrf_token %}
+      <input type="submit" value="삭제하기" />
+    </form>
+  </body>
+</html>

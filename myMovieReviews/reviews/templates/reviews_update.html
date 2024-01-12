@@ -1,25 +1,38 @@
-<h1>리뷰 수정하기</h1>
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/reviews.css' %}" />
+  </head>
+  <body>
+    <h1>리뷰 수정하기</h1>
 
-<form action="/reviews/{{review.id}}/update" method="post">
-  {% csrf_token %}
-  <input name="title" placeholder="제목" value="{{review.title}}" /> <br />
-  <input name="director" placeholder="감독" value="{{review.director}}" />
-  <br />
-  <input name="mainActor" placeholder="주연" value="{{review.mainActor}}" />
-  <br />
-  <input name="genre" placeholder="장르" value="{{review.genre}}" /> <br />
-  <input name="horoscope" placeholder="평점" value="{{review.horoscope}}" />
-  <br />
-  <input
-    name="runningTime"
-    placeholder="러닝 타임"
-    value="{{review.runningTime}}"
-  />
-  <br />
-  <textarea name="reviewContent" cols="30" rows="10" placeholder="리뷰 내용">
-{{review.reviewContent}}</textarea
-  >
-  <div>
-    <input type="submit" value="수정완료" />
-  </div>
-</form>
+    <form action="/reviews/{{review.id}}/update" method="post">
+      {% csrf_token %}
+      <input name="title" placeholder="제목" value="{{review.title}}" /> <br />
+      <input name="director" placeholder="감독" value="{{review.director}}" />
+      <br />
+      <input name="mainActor" placeholder="주연" value="{{review.mainActor}}" />
+      <br />
+      <input name="genre" placeholder="장르" value="{{review.genre}}" /> <br />
+      <input name="horoscope" placeholder="평점" value="{{review.horoscope}}" />
+      <br />
+      <input
+        name="runningTime"
+        placeholder="러닝 타임"
+        value="{{review.runningTime}}"
+      />
+      <br />
+      <textarea
+        name="reviewContent"
+        cols="30"
+        rows="10"
+        placeholder="리뷰 내용"
+      >
+        {{review.reviewContent}}</textarea
+      >
+      <div>
+        <input type="submit" value="수정완료" />
+      </div>
+    </form>
+  </body>
+</html>

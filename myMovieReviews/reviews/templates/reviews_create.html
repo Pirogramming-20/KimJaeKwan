@@ -1,20 +1,29 @@
-<h1>Movie review</h1>
+{% load static %}
+<html>
+  <head>
+    <title>my Movie reviews</title>
+    <link rel="stylesheet" href="{% static 'css/reviews.css' %}" />
+  </head>
+  <body>
+    <h1>Movie review</h1>
 
-<form action="/reviews/create" method="post">
-  {% csrf_token %}
-  <input name="title" placeholder="제목" /> <br />
-  <input name="director" placeholder="감독" /> <br />
-  <input name="mainActor" placeholder="주연" /> <br />
-  <input name="genre" placeholder="장르" /> <br />
-  <input name="horoscope" placeholder="평점" /> <br />
-  <input name="runningTime" placeholder="러닝 타임" /> <br />
-  <textarea
-    name="reviewContent"
-    cols="30"
-    rows="10"
-    placeholder="리뷰 내용"
-  ></textarea>
-  <div>
-    <input type="submit" value="작성완료" />
-  </div>
-</form>
+    <form action="/reviews/create" method="post">
+      {% csrf_token %}
+      <input name="title" placeholder="제목" /> <br />
+      <input name="director" placeholder="감독" /> <br />
+      <input name="mainActor" placeholder="주연" /> <br />
+      <input name="genre" placeholder="장르" /> <br />
+      <input name="horoscope" placeholder="평점" /> <br />
+      <input name="runningTime" placeholder="러닝 타임" /> <br />
+      <textarea
+        name="reviewContent"
+        cols="30"
+        rows="10"
+        placeholder="리뷰 내용"
+      ></textarea>
+      <div>
+        <input type="submit" value="작성완료" />
+      </div>
+    </form>
+  </body>
+</html>

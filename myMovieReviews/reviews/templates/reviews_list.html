@@ -1,12 +1,24 @@
-<h3>my Movie reviews</h3>
+{% load static %}
+<html>
+  <head>
+    <title>my Movie reviews</title>
+    <link rel="stylesheet" href="{% static 'css/reviews.css' %}" />
+    <!-- <link rel="stylesheet" href="{% static 'css/reset.css' %}" /> -->
+  </head>
+  <body>
+    <h1>my Movie reviews</h1>
 
-<a href="/reviews/create"> 리뷰 작성하러 가기</a>
+    <a href="/reviews/create" id="create_review"> 리뷰 작성하러 가기</a>
 
-{% for review in reviews %}
-<div>
-  <p><a href="/reviews/{{review.id}}">{{review.title}}</a></p>
-  <p>{{review.genre}}</p>
-  <p>{{review.horoscope}}</p>
-  <br />
-</div>
-{% endfor %}
+    <div id="container">
+      {% for review in reviews %}
+      <div>
+        <p><a href="/reviews/{{review.id}}">{{review.title}}</a></p>
+        <p>{{review.genre}}</p>
+        <p>{{review.horoscope}}</p>
+        <br />
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
