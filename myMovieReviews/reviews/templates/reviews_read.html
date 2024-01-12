@@ -16,7 +16,7 @@
     <br />
     <p>별점: {{ review.horoscope }}</p>
     <br />
-    <p>러닝타임: {{ hours }}시간 {{minutes}}분</p>
+    <p>러닝타임: {% if hours != 0 %}{{ hours }}시간{% endif %} {{minutes}}분</p>
     <br />
     <p>리뷰 내용: {{ review.reviewContent }}</p>
     <br />
