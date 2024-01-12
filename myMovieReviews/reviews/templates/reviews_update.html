@@ -13,7 +13,12 @@
       <br />
       <input name="mainActor" placeholder="주연" value="{{review.mainActor}}" />
       <br />
-      <input name="genre" placeholder="장르" value="{{review.genre}}" /> <br />
+      <select name="genre">
+        {% for genre, genre_display in review.GENRE_CHOICES %}
+        <option value="{{ genre }}">{{ genre_display }}</option>
+        {% endfor %}
+      </select>
+      <br />
       <input name="horoscope" placeholder="평점" value="{{review.horoscope}}" />
       <br />
       <input
