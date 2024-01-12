@@ -6,38 +6,54 @@
   <body>
     <h1>리뷰 수정하기</h1>
 
-    <form action="/reviews/{{review.id}}/update" method="post">
-      {% csrf_token %}
-      <input name="title" placeholder="제목" value="{{review.title}}" /> <br />
-      <input name="director" placeholder="감독" value="{{review.director}}" />
-      <br />
-      <input name="mainActor" placeholder="주연" value="{{review.mainActor}}" />
-      <br />
-      <select name="genre">
-        {% for genre, genre_display in review.GENRE_CHOICES %}
-        <option value="{{ genre }}">{{ genre_display }}</option>
-        {% endfor %}
-      </select>
-      <br />
-      <input name="horoscope" placeholder="평점" value="{{review.horoscope}}" />
-      <br />
-      <input
-        name="runningTime"
-        placeholder="러닝 타임"
-        value="{{review.runningTime}}"
-      />
-      <br />
-      <textarea
-        name="reviewContent"
-        cols="30"
-        rows="10"
-        placeholder="리뷰 내용"
+    <div class="container_r">
+      <h2 class="title_review">리뷰 수정하기</h2>
+      <form
+        action="/reviews/{{review.id}}/update"
+        method="post"
+        class="input_form"
       >
-        {{review.reviewContent}}</textarea
-      >
-      <div>
-        <input type="submit" value="수정완료" />
-      </div>
-    </form>
+        {% csrf_token %}
+        <input name="title" placeholder="제목" value="{{review.title}}" />
+        <br />
+        <input name="director" placeholder="감독" value="{{review.director}}" />
+        <br />
+        <input
+          name="mainActor"
+          placeholder="주연"
+          value="{{review.mainActor}}"
+        />
+        <br />
+        <select name="genre">
+          {% for genre, genre_display in review.GENRE_CHOICES %}
+          <option value="{{ genre }}">{{ genre_display }}</option>
+          {% endfor %}
+        </select>
+        <br />
+        <input
+          name="horoscope"
+          placeholder="평점"
+          value="{{review.horoscope}}"
+        />
+        <br />
+        <input
+          name="runningTime"
+          placeholder="러닝 타임"
+          value="{{review.runningTime}}"
+        />
+        <br />
+        <textarea
+          name="reviewContent"
+          cols="30"
+          rows="10"
+          placeholder="리뷰 내용"
+        >
+            {{review.reviewContent}}</textarea
+        >
+        <div>
+          <input type="submit" value="수정완료" />
+        </div>
+      </form>
+    </div>
   </body>
 </html>

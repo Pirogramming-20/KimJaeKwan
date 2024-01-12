@@ -7,25 +7,25 @@
   <body>
     <a href="/reviews"> my Movie reviews</a>
 
-    <h1>{{ review.title }}</h1>
-    <small>감독: {{ review.director }}</small>
-    <br />
-    <p>주연: {{ review.mainActor }}</p>
-    <br />
-    <p>장르: {{ review.genre }}</p>
-    <br />
-    <p>별점: {{ review.horoscope }}</p>
-    <br />
-    <p>러닝타임: {% if hours != 0 %}{{ hours }}시간{% endif %} {{minutes}}분</p>
-    <br />
-    <p>리뷰 내용: {{ review.reviewContent }}</p>
-    <br />
-
-    <a href="/reviews/{{review.id}}/update"> 수정하기 </a>
-
-    <form action="/reviews/{{review.id}}/delete" method="post">
-      {% csrf_token %}
-      <input type="submit" value="삭제하기" />
-    </form>
+    <div class="container_rl">
+      <div>
+        <h1>{{ review.title }}</h1>
+        <p>감독: {{ review.director }}</p>
+        <p>주연: {{ review.mainActor }}</p>
+        <p>장르: {{ review.genre }}</p>
+        <p>별점: {{ review.horoscope }}</p>
+        <p>
+          러닝타임: {% if hours != 0 %}{{ hours }}시간{% endif %} {{minutes}}분
+        </p>
+        <p>리뷰 내용: {{ review.reviewContent }}</p>
+        <div id="btns">
+          <a href="/reviews/{{review.id}}/update"> 수정하기 </a>
+          <form action="/reviews/{{review.id}}/delete" method="post">
+            {% csrf_token %}
+            <input type="submit" value="삭제하기" />
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -25,3 +25,66 @@ body {
   border-radius: 10px;
   padding: 10px 20px;
 }
+
+.container_r {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.title_review {
+  background-color: aquamarine;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.input_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: beige;
+  padding: 30px 50px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.container_rl {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.container_rl > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: beige;
+  border-radius: 10px;
+  width: 700px;
+}
+
+#btns {
+  display: flex;
+  gap: 20px;
+}
+
+#btns > a,
+#btns > form > input {
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: aquamarine;
+  border: 1px solid black;
+}
+
+#btns > a {
+  width: 80px;
+  height: 26.4px;
+  padding: 1px 6px;
+  text-decoration: none;
+}
+
+#btns > a:hover,
+#btns > form > input:hover {
+  background-color: palegreen;
+}
