@@ -10,9 +10,12 @@ def reviews_list(request):
 
 def reviews_read(request, pk):
     review = Review.objects.get(id = pk)
-
+    hours = review.runningTime // 60
+    minutes = review.runningTime %60
     context = {
         "review" : review,
+        "hours" : hours,
+        "minutes" : minutes,
     }
     return render(request, "reviews_read.html", context)
 
