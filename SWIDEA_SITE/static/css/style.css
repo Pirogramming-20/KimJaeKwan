@@ -195,3 +195,8 @@ img {
   right: 50px;
   top: 20px;
 }
+
+.btn-wrapping {
+  display: flex;
+  justify-content: center;
+}

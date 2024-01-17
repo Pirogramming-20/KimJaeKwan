@@ -3,7 +3,7 @@
   <p class="title-detail">{{tool.name}}</p>
   <p>{{tool.kind}}</p>
   <p>{{tool.explain}}</p>
-  <div class="btns">
+  <div class="btn-wrapping">
     <form action="{% url 'toolss:delete' tool.pk %}" method="POST">
       {%csrf_token%}
       <button type="submit" class="btn btn-danger">삭제</button>

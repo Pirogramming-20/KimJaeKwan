@@ -31,14 +31,16 @@
     <p>아이디어 설명: {{idea.content}}</p>
     <hr />
 
-    <form action="{% url 'ideas:delete' idea.pk %}" method="POST">
-      {%csrf_token%}
-      <button type="submit" class="btn btn-danger">삭제</button>
-      <a href="{% url 'ideas:main'%}" class="btn btn-primary">목록</a>
-      <a href="{% url 'ideas:update' idea.pk %}" class="btn btn-success"
-        >수정</a
-      >
-    </form>
+    <div class="btn-wrapping">
+      <form action="{% url 'ideas:delete' idea.pk %}" method="POST">
+        {%csrf_token%}
+        <button type="submit" class="btn btn-danger">삭제</button>
+        <a href="{% url 'ideas:main'%}" class="btn btn-primary">목록</a>
+        <a href="{% url 'ideas:update' idea.pk %}" class="btn btn-success"
+          >수정</a
+        >
+      </form>
+    </div>
   </div>
 </div>
 {% endblock content %}

@@ -4,7 +4,9 @@
 <div class="content-wrapper">
   <form action="{% url 'toolss:create' %}" method="post">
     {%csrf_token%} {{form.as_p}}
-    <button class="btn btn-success">추가</button>
+    <div class="btn-wrapping">
+      <button class="btn btn-success">추가</button>
+    </div>
   </form>
 </div>
 {%endblock%}
