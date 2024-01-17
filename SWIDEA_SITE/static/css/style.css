@@ -47,6 +47,14 @@ nav {
   border: 1px solid white;
 }
 
+.container-sort {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 40px;
+  position: relative;
+  top: 50px;
+}
+
 img {
   width: 200px;
   height: 200px;

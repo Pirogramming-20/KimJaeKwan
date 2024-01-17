@@ -2,7 +2,7 @@
 <title>아이디어 목록</title>
 {%endblock%} {%block content%}
 <form action="{% url 'ideas:main' %}" method="get" id="search_mode">
-  <div class="container my-3">
+  <div class="container-sort">
     <select name="search_mode" onchange="submit()">
       <option value="" selected>정렬기준</option>
       <option value="찜하기순">찜하기순</option>
