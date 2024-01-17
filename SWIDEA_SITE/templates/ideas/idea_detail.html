@@ -2,11 +2,15 @@
 <div class="content-detail">
   {% if idea.photo.url != '' %}
   <div class="image-container">
-    <img src="{{idea.photo.url}}" alt="아이디어 이미지" />
+    <img src="{{idea.photo.url}} " alt="아이디어 이미지" class="img-detail" />
   </div>
   {% else %}
   <div class="image-container">
-    <img src="{% static 'image/no_img.png' %}" alt="대체 이미지" />
+    <img
+      src="{% static 'image/no_img.png' %}"
+      alt="대체 이미지"
+      class="img-detail"
+    />
   </div>
   {% endif %}
 
