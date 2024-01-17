@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% load static %} {%block head%}
+<title>개발툴 목록</title>
+{%endblock%} {%block content%}
+<div class="content-wrapper">
+  <!-- 글 목록 -->
+  {% for tool in tools %}
+  <div class="item">
+    =
+    <div class="info">
+      <a href="{% url 'toolss:detail' tool.pk %}" class="name">
+        {{ tool.name }}
+      </a>
+      <p class="kind">{{tool.kind}}</p>
+      <p class="explain">{{tool.explain}}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{%endblock%}

@@ -1,0 +1,29 @@
+body {
+  background-color: black;
+  color: white;
+}
+.content-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20%, auto));
+  gap: 10px;
+  margin: 30px 30px 0 30px;
+  background-color: gray;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+}
+
+.item {
+  width: 220px;
+  height: 300px;
+  background-color: aqua;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

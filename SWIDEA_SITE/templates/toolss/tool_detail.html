@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<p>{{tool.name}}</p>
+<p>{{tool.kind}}</p>
+<p>{{tool.explain}}</p>
+<hr />
+<form action="{% url 'toolss:delete' tool.pk %}" method="POST">
+  {%csrf_token%}
+  <button type="submit" class="btn btn-danger">삭제</button>
+  <a href="{% url 'toolss:main'%}" class="btn btn-primary">목록</a>
+  <a href="{% url 'toolss:update' tool.pk %}" class="btn btn-primary">수정</a>
+</form>
+{% endblock content %}

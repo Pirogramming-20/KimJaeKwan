@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% load static %} {%block head%}
+<title>아이디어 목록</title>
+{%endblock%} {%block content%}
+<form action="{% url 'ideas:main' %}" method="get" id="search_mode">
+  <div class="container my-3">
+    <select name="search_mode" onchange="submit()">
+      <option value="" selected>정렬기준</option>
+      <option value="찜하기순">찜하기순</option>
+      <option value="이름순">이름순</option>
+      <option value="등록순">등록순</option>
+      <option value="최신순">최신순</option>
+    </select>
+  </div>
+</form>
+<div class="content-wrapper">
+  <!-- 글 목록 -->
+  {% for idea in ideas %}
+  <div class="item">
+    {% if idea.photo.url != null and idea.photo.url != '' %} {% if idea.star %}
+    <div class="image-container">
+      <img src="{{ idea.photo.url }}" alt="" />
+      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
+        <i class="fa-solid fa-star fill check"></i>
+      </a>
+    </div>
+    {% else %}
+    <div class="image-container">
+      <img src="{{ idea.photo.url }}" alt="" />
+      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
+        <i class="fa-regular fa-star outline"></i>
+      </a>
+    </div>
+    {% endif %} {% else %} {% if idea.star %}
+    <div class="image-container">
+      <img src="{% static 'image/no_img.png' %}" alt="대체텍스트" />
+      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
+        <i class="fa-solid fa-star fill check"></i>
+      </a>
+    </div>
+    {% else %}
+    <div class="image-container">
+      <img src="{% static 'image/no_img.png' %}" alt="대체텍스트" />
+      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
+        <i class="fa-regular fa-star outline"></i>
+      </a>
+    </div>
+    {% endif %} {% endif %}
+    <div class="info">
+      <a href="{% url 'ideas:detail' idea.pk %}" class="title">
+        {{ idea.title }}
+      </a>
+      <p class="tool">{{idea.tool}}</p>
+      <p class="interestedNum">
+        <button>+</button>
+        {{ idea.interestedNum }}
+        <button>-</button>
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<script>
+  function submitForm() {
+    document.getElementById("search_mode").submit();
+  }
+</script>
+{%endblock%}
