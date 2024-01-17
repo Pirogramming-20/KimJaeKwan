@@ -5,9 +5,8 @@
   <!-- 글 목록 -->
   {% for tool in tools %}
   <div class="item">
-    =
     <div class="info">
-      <a href="{% url 'toolss:detail' tool.pk %}" class="name">
+      <a href="{% url 'toolss:detail' tool.pk %}" class="title">
         {{ tool.name }}
       </a>
       <p class="kind">{{tool.kind}}</p>

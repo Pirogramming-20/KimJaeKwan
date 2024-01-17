@@ -1,8 +1,10 @@
 {% extends 'base.html' %} {%block head%}
 <title>tool_create</title>
 {% endblock %} {%block content%}
-<form action="{% url 'toolss:create' %}" method="post">
-  {%csrf_token%} {{form.as_p}}
-  <button class="btn btn-success">추가하기</button>
-</form>
+<div class="content-wrapper">
+  <form action="{% url 'toolss:create' %}" method="post">
+    {%csrf_token%} {{form.as_p}}
+    <button class="btn btn-success">추가</button>
+  </form>
+</div>
 {%endblock%}

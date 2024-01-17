@@ -20,21 +20,27 @@
     <div class="image-container">
       <img src="{{ idea.photo.url }}" alt="" />
       <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
-        <i class="fa-solid fa-star fill check"></i>
+        <i
+          class="fa-solid fa-star fill check over-icon"
+          style="color: yellow"
+        ></i>
       </a>
     </div>
     {% else %}
     <div class="image-container">
       <img src="{{ idea.photo.url }}" alt="" />
       <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
-        <i class="fa-regular fa-star outline"></i>
+        <i class="fa-regular fa-star outline over-icon"></i>
       </a>
     </div>
     {% endif %} {% else %} {% if idea.star %}
     <div class="image-container">
       <img src="{% static 'image/no_img.png' %}" alt="대체텍스트" />
       <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
-        <i class="fa-solid fa-star fill check"></i>
+        <i
+          class="fa-solid fa-star fill check over-icon"
+          style="color: yellow"
+        ></i>
       </a>
     </div>
     {% else %}
@@ -49,8 +55,9 @@
       <a href="{% url 'ideas:detail' idea.pk %}" class="title">
         {{ idea.title }}
       </a>
-      <p class="tool">{{idea.tool}}</p>
+      <p class="tool">예상 개발 툴: {{idea.tool}}</p>
       <p class="interestedNum">
+        아이디어 관심도:
         <button>-</button>
         {{ idea.interestedNum }}
         <button>+</button>

@@ -1,43 +1,44 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<h1 style="color: green; font-size: 40px">{{idea.title}}</h1>
-{% if idea.photo.url != '' %} {% if idea.star %}
-<div class="image-container">
-  <img src="{{idea.photo.url}}" alt="아이디어 이미지" />
-  <a class="star-icon" href="{% url 'ideas:star_detail' idea.pk %}">
-    <i class="fa-solid fa-star fill check"></i>
-  </a>
+<div class="content-detail">
+  {% if idea.photo.url != '' %}
+  <div class="image-container">
+    <img src="{{idea.photo.url}}" alt="아이디어 이미지" />
+  </div>
+  {% else %}
+  <div class="image-container">
+    <img src="{% static 'image/no_img.png' %}" alt="대체 이미지" />
+  </div>
+  {% endif %}
+
+  <div class="content-detail-1">
+    {% if idea.star %}
+    <p class="title-detail">
+      {{idea.title}}
+      <a class="star-icon" href="{% url 'ideas:star_detail' idea.pk %}">
+        <i class="fa-solid fa-star fill check" style="color: yellow"></i>
+      </a>
+    </p>
+    {% else %}
+    <p class="title-detail">
+      {{idea.title}}
+      <a class="star-icon" href="{% url 'ideas:star_detail' idea.pk %}">
+        <i class="fa-regular fa-star outline"></i>
+      </a>
+    </p>
+    {% endif %}
+    <p>아이디어 관심도: {{idea.interestedNum}}</p>
+    <p>예상 개발 툴: {{idea.tool}}</p>
+    <p>아이디어 설명: {{idea.content}}</p>
+    <hr />
+
+    <form action="{% url 'ideas:delete' idea.pk %}" method="POST">
+      {%csrf_token%}
+      <button type="submit" class="btn btn-danger">삭제</button>
+      <a href="{% url 'ideas:main'%}" class="btn btn-primary">목록</a>
+      <a href="{% url 'ideas:update' idea.pk %}" class="btn btn-success"
+        >수정</a
+      >
+    </form>
+  </div>
 </div>
-{% else %}
-<div class="image-container">
-  <img src="{{idea.photo.url}}" alt="아이디어 이미지" />
-  <a class="star-icon" href="{% url 'ideas:star_detail' idea.pk %}">
-    <i class="fa-regular fa-star outline"></i>
-  </a>
-</div>
-{% endif %} {% else %} {% if idea.star %}
-<div class="image-container">
-  <img src="{% static 'image/no_img.png' %}" alt="대체 이미지" />
-  <a class="star-icon" href="{% url 'ideas:star_detail' idea.pk %}">
-    <i class="fa-solid fa-star fill check"></i>
-  </a>
-</div>
-{% else %}
-<div class="image-container">
-  <img src="{% static 'image/no_img.png' %}" alt="대체 이미지" />
-  <a class="star-icon" href="{% url 'ideas:star_detail' idea.pk %}">
-    <i class="fa-regular fa-star outline"></i>
-  </a>
-</div>
-{% endif %} {% endif %}
-<p>{{idea.title}}</p>
-<p>{{idea.interestedNum}}</p>
-<p>{{idea.tool}}</p>
-<p>{{idea.content}}</p>
-<hr />
-<form action="{% url 'ideas:delete' idea.pk %}" method="POST">
-  {%csrf_token%}
-  <button type="submit" class="btn btn-danger">삭제</button>
-  <a href="{% url 'ideas:main'%}" class="btn btn-primary">목록</a>
-  <a href="{% url 'ideas:update' idea.pk %}" class="btn btn-primary">수정</a>
-</form>
 {% endblock content %}
