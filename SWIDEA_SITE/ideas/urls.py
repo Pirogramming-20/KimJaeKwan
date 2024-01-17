@@ -11,4 +11,5 @@ urlpatterns = [
     path('update/<int:pk>/', update, name='update'),
     path('star_list/<int:pk>',star_list,name='star_list'),
     path('star_detail/<int:pk>',star_detail,name='star_detail'),
+    path('update_interested_num/', update_interested_num, name='update_interested_num'),
 ]

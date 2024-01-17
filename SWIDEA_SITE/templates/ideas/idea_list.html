@@ -15,7 +15,7 @@
 <div class="content-wrapper">
   <!-- 글 목록 -->
   {% for idea in ideas %}
-  <div class="item">
+  <div class="item" data-idea-id="{{ idea.id }}">
     {% if idea.photo.url != null and idea.photo.url != '' %} {% if idea.star %}
     <div class="image-container">
       <img src="{{ idea.photo.url }}" alt="" />
@@ -51,9 +51,9 @@
       </a>
       <p class="tool">{{idea.tool}}</p>
       <p class="interestedNum">
-        <button>+</button>
-        {{ idea.interestedNum }}
         <button>-</button>
+        {{ idea.interestedNum }}
+        <button>+</button>
       </p>
     </div>
   </div>

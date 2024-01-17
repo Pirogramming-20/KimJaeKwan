@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Idea
 from .forms import IdeaForm
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
  
 def main(request):
     # sort_select = request.GET.get('sort_select')
@@ -66,3 +68,16 @@ def star_detail(request,pk):
     star_toggle.star = True
   star_toggle.save()
   return redirect('ideas:detail',pk)
+
+@require_POST
+def update_interested_num(request):
+    idea_id = request.POST.get('idea_id')
+    increment = int(request.POST.get('increment'))
+
+    try:
+        idea = Idea.objects.get(pk=idea_id)
+        idea.interestedNum += increment
+        idea.save()
+        return JsonResponse({'interestedNum': idea.interestedNum})
+    except Idea.DoesNotExist:
+        return JsonResponse({'error': '아이디어를 찾을 수 없습니다.'})
