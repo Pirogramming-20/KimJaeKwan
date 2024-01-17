@@ -19,7 +19,7 @@
     {% if idea.photo.url != null and idea.photo.url != '' %} {% if idea.star %}
     <div class="image-container">
       <img src="{{ idea.photo.url }}" alt="" class="img" />
-      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
+      <a class="star-icon star-move" href="{% url 'ideas:star_list' idea.pk %}">
         <i
           class="fa-solid fa-star fill check over-icon"
           style="color: yellow"
@@ -29,14 +29,14 @@
     {% else %}
     <div class="image-container">
       <img src="{{ idea.photo.url }}" alt="" class="img" />
-      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
+      <a class="star-icon star-move" href="{% url 'ideas:star_list' idea.pk %}">
         <i class="fa-regular fa-star outline over-icon"></i>
       </a>
     </div>
     {% endif %} {% else %} {% if idea.star %}
     <div class="image-container">
       <img src="{% static 'image/no_img.png' %}" alt="대체텍스트" class="img" />
-      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
+      <a class="star-icon star-move" href="{% url 'ideas:star_list' idea.pk %}">
         <i
           class="fa-solid fa-star fill check over-icon"
           style="color: yellow"
@@ -46,7 +46,7 @@
     {% else %}
     <div class="image-container">
       <img src="{% static 'image/no_img.png' %}" alt="대체텍스트" class="img" />
-      <a class="star-icon" href="{% url 'ideas:star_list' idea.pk %}">
+      <a class="star-icon star-move" href="{% url 'ideas:star_list' idea.pk %}">
         <i class="fa-regular fa-star outline"></i>
       </a>
     </div>
