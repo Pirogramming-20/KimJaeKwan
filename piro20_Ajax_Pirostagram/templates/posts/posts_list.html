@@ -1,0 +1,54 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+<a href="{% url 'posts:create' %}">글 생성</a>
+
+<div id="container">
+    {% for post in posts %}
+        <div class="post_container post-id-{{ post.id }}">
+            <div>{{ post.title }}</div>
+            <div>{{ post.content }}</div>
+            <div class="like_btn" onclick="onClickLike({{post.id}})">
+                {% if post.like %}
+                    <i class="fa-solid fa-heart" style="color:red"></i>
+                {% else %}
+                    <i class="fa-regular fa-heart"></i>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<script>
+    // 서버에서 id와 like 여부를 계산하여 응답하면 그 값으로 처리
+    const onClickLike = (id) => {
+        const requestLike = new XMLHttpRequest();
+        const url = "/like_ajax/";
+        requestLike.open("POST", url, true);
+        requestLike.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        requestLike.send(JSON.stringify({ id: id }));
+    
+        //상태가 바뀔 때마다 호출
+        requestLike.onreadystatechange = () => {
+            if (requestLike.readyState === XMLHttpRequest.DONE) {
+                if (requestLike.status < 400) {
+                    const { id, liked } = JSON.parse(requestLike.response);
+                    const element = document.querySelector(`.post-id-${id} .like_btn i`);
+                    //화면에 출력
+                    if (liked) {
+                        element.classList.remove("fa-regular");
+                        element.classList.add("fa-solid");
+                        element.style.color = "red";
+                    } else {
+                        element.classList.remove("fa-solid");
+                        element.classList.add("fa-regular");
+                    }
+                    //console.log(liked);
+                }
+            }
+        };
+    }
+    
+    
+    
+</script>
+{% endblock %}
