@@ -1,12 +1,17 @@
 {% extends 'base.html' %} 
 {% load static %}
 {% block content %}
-<a href="{% url 'posts:create' %}">글 생성</a>
-
+<div class="search-container">
+    <form action="{% url 'posts:main' %}" method="get">
+        <input type="text" name="q" value="{{ search_query }}" class="search-text" id="searchInput" oninput="performSearch()" placeholder="검색어 입력">
+        <input type="submit" class="search-btn" value="검색">
+    </form>
+    <ul id="searchResults"></ul>
+</div>
 <div id="container">
     {% for post in posts %}
         <div class="post_container post-id-{{ post.id }}">
-            <div>{{ post.title }}</div>
+            <a href="{% url 'posts:detail' post.id %}">{{ post.title }}</a>
             <div>{{ post.content }}</div>
             <div class="like_btn" onclick="onClickLike({{post.id}})">
                 {% if post.like %}
@@ -15,6 +20,8 @@
                     <i class="fa-regular fa-heart"></i>
                 {% endif %}
             </div>
+
+            <a href="{% url 'posts:detail' post.id %}">댓글 쓰러 가기</a>
         </div>
     {% endfor %}
 </div>
@@ -33,6 +40,7 @@
                 if (requestLike.status < 400) {
                     const { id, liked } = JSON.parse(requestLike.response);
                     const element = document.querySelector(`.post-id-${id} .like_btn i`);
+                    //console.log(element);
                     //화면에 출력
                     if (liked) {
                         element.classList.remove("fa-regular");
@@ -47,8 +55,34 @@
             }
         };
     }
-    
-    
-    
+
+
+    function performSearch() {
+        const searchInput = document.getElementById('searchInput').value;
+
+        // AJAX 요청
+        const xhr = new XMLHttpRequest();
+        const url = `/search/?q=${encodeURIComponent(searchInput)}`;
+        
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const resultsContainer = document.getElementById('searchResults');
+                    const response = JSON.parse(xhr.responseText);
+
+                    // 검색 결과를 동적으로 업데이트
+                    resultsContainer.innerHTML = '';
+                    for (const result of response.results) {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = result.title;
+                        resultsContainer.appendChild(listItem);
+                    }
+                }
+            }
+        };
+        
+        xhr.send();
+    }
 </script>
 {% endblock %}

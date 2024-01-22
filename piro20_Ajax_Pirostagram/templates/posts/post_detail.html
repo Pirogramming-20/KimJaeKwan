@@ -1,0 +1,95 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+<div class="detail_container">
+    <div class="detail_lr">
+        <div class="detail_title">{{post.title}}</div>
+        <div>{{post.content}}</div>
+        <form id="commentForm" action="" method="POST" onsubmit="return onClickCreateComment({{post.id}});"">
+            {% csrf_token %}
+            <div class="comment_create_form">
+                <div>{{ form.as_table }}</div>
+                <div class="submit_btn" onclick="onClickCreateComment({{post.id}})">작성하기</div>
+            </div>
+            <!-- <input type="submit" value="submit"> -->
+        </form>
+        <ul id="commentsContainer" class="comments-container">
+            <p>댓글창</p>
+            {% for comment in comments %}
+                <li class="comment_ins comment-id-{{comment.id}}">
+                    <div class="comment_title">댓글 : {{comment.content}}</div>
+                    <div class="delete_btn" onclick="onClickDelete({{comment.id}})">삭제하기</div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<script>
+    // onClickDelete 함수 업데이트
+    const onClickDelete = (id) => {
+        const requestDelete = new XMLHttpRequest();
+        const url = `/delete_ajax/${id}/`; 
+        requestDelete.open("POST", url, true);
+        requestDelete.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        requestDelete.send();
+
+        // 응답을 처리
+        requestDelete.onreadystatechange = () => {
+            if (requestDelete.readyState === XMLHttpRequest.DONE) {
+                //console.log(requestDelete.response); 
+
+                if (requestDelete.status < 400) {
+                    const { id } = JSON.parse(requestDelete.response);
+
+                    //console.log(id)
+                    const commentContainer = document.querySelector(`.comment-id-${id}`);
+                    //console.log(id)
+                    //console.log(document.querySelector(`.comment-id-${id}`));
+                    //console.log(commentContainer);
+
+                    if (commentContainer) {
+                        commentContainer.remove();
+                    }
+                }
+            }
+        };
+    };
+
+    const onClickCreateComment = (id) => {
+        const requestCreate = new XMLHttpRequest();
+        const url = `/create_ajax/${id}/`;
+        
+        requestCreate.open("POST", url, true);
+        requestCreate.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+        // FormData: 폼을 받아서 서버로 전송하기 위함
+        const formData = new FormData(document.getElementById('commentForm'));
+    
+        requestCreate.onreadystatechange = function () {
+            if (requestCreate.readyState === XMLHttpRequest.DONE) {
+                if (requestCreate.status < 400) {
+                    const { id, content } = JSON.parse(requestCreate.response);
+    
+                    // comment를 추가하기 위해 받아옴
+                    const commentContainer = document.getElementById('commentsContainer');
+    
+                    // 새 댓글 html 만들기
+                    const newComment = document.createElement('li');
+                    newComment.className = `comment_ins comment-id-${id}`;
+                    newComment.innerHTML = `<div class="comment_title">댓글 : ${content}</div>
+                                            <div class="delete_btn" onclick="onClickDelete(${id})">삭제하기</div>`;
+    
+                    // 추가하기
+                    commentContainer.appendChild(newComment);
+                    // 작성 후 폼 지우기
+                    document.getElementById('commentForm').reset();
+                }
+            }
+        };
+    
+        // URLSearchParams로 formData를 URL-encoded 문자열로 변환
+        // URLSearchParams 삭제하면 댓글 내용이 아닌 undefined가 출력
+        requestCreate.send(new URLSearchParams(formData));
+    };
+</script>
+{% endblock content %}
